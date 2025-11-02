@@ -1,0 +1,22 @@
+/* Button pop animation */
+.animate-button {
+  transition: transform 0.2s;
+}
+.animate-button:hover {
+  transform: scale(1.1);
+}
+
+/* Table styling */
+.table-hover tbody tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* Card shadows for better UI */
+.card {
+  border-radius: 12px;
+}
+
+/* Center all cards text */
+.card .card-body {
+  text-align: center;
+}
