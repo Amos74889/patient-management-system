@@ -1,27 +1,32 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Patient Management System</h1>
-<div class="row">
-  <div class="col-md-4">
-    <div class="card p-3">
-      <h5>Patients</h5>
-      <p>{{ patients_count }}</p>
-      <a href="{{ url_for('patients_list') }}" class="btn btn-primary btn-sm">Manage</a>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card p-3">
-      <h5>Appointments</h5>
-      <p>{{ appts_count }}</p>
-      <a href="{{ url_for('appointments_list') }}" class="btn btn-secondary btn-sm">Manage</a>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card p-3">
-      <h5>Invoices</h5>
-      <p>{{ invoices_count }}</p>
-      <a href="{{ url_for('invoices_list') }}" class="btn btn-success btn-sm">Manage</a>
-    </div>
-  </div>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Dashboard</title>
+</head>
+<body>
+    <h1>Patient Dashboard</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Appointment</th>
+            <th>Billing</th>
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.address }}</td>
+            <td>{{ patient.contact }}</td>
+            <td>{{ patient.email }}</td>
+            <td>{{ patient.appointment }}</td>
+            <td>{{ patient.billing }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
