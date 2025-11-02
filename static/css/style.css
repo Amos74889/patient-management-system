@@ -1,0 +1,30 @@
+/* Polished UI styles for the hospital project (Option B - visually rich) */
+:root{
+  --primary: #0d6efd;
+  --muted: #6c757d;
+  --bg: #f4f7fa;
+}
+body{ font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: var(--bg); color: #222; margin:0; }
+.container{ max-width:1100px; margin:auto; padding:20px; }
+
+/* Navbar adjustments */
+.navbar-brand { font-weight:700; }
+.stat-card { border-radius:12px; box-shadow: 0 6px 18px rgba(13,110,253,0.08); }
+.stat-card h3 { color:var(--primary); }
+
+/* Cards */
+.card { border-radius:12px; box-shadow: 0 4px 18px rgba(16,24,40,0.05); }
+
+/* Tables */
+table th { text-transform:uppercase; font-size:12px; letter-spacing:0.06em; }
+table td, table th { vertical-align: middle; }
+
+/* Buttons */
+.btn { border-radius:8px; transition: transform .12s ease, box-shadow .12s ease; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(13,110,253,0.12); }
+
+/* small screens */
+@media (max-width:768px){ .dashboard { flex-direction: column; } }
+
+/* subtle input focus */
+.form-control:focus, .form-select:focus{ box-shadow: 0 6px 18px rgba(13,110,253,0.08); border-color: var(--primary); }
