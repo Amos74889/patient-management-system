@@ -1,32 +1,53 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Patient Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management System</title>
+    <style>
+        body { font-family: Arial; margin: 20px; background: #f2f2f2; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #ddd; }
+        form { background: white; padding: 15px; border-radius: 8px; }
+        input, button { margin: 5px 0; padding: 8px; width: 100%; }
+        button { background: green; color: white; border: none; cursor: pointer; }
+        button:hover { background: darkgreen; }
+    </style>
 </head>
 <body>
-    <h1>Patient Dashboard</h1>
-    <table border="1">
+
+    <h2>Patient Management System</h2>
+
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="address" placeholder="Address">
+        <input type="text" name="contact" placeholder="Contact">
+        <input type="email" name="email" placeholder="Email">
+        <input type="text" name="appointment" placeholder="Appointment">
+        <input type="number" step="0.01" name="billing" placeholder="Billing Amount">
+        <button type="submit">Add Patient</button>
+    </form>
+
+    <table>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Contact</th>
-            <th>Email</th>
-            <th>Appointment</th>
-            <th>Billing</th>
+            <th>Name</th><th>Address</th><th>Contact</th><th>Email</th><th>Appointment</th><th>Billing</th><th>Actions</th>
         </tr>
         {% for patient in patients %}
         <tr>
-            <td>{{ patient.id }}</td>
             <td>{{ patient.name }}</td>
             <td>{{ patient.address }}</td>
             <td>{{ patient.contact }}</td>
             <td>{{ patient.email }}</td>
             <td>{{ patient.appointment }}</td>
             <td>{{ patient.billing }}</td>
+            <td>
+                <a href="/delete/{{ patient.id }}" style="color:red;">Delete</a>
+            </td>
         </tr>
         {% endfor %}
     </table>
+
 </body>
 </html>
