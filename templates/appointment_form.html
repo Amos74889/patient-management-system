@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>New Appointment</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">Patient</label>
+    <select name="patient_id" class="form-select">
+      {% for p in patients %}
+        <option value="{{ p._id }}" {% if request.args.get('patient_id')==p._id %}selected{% endif %}>{{ p.first_name }} {{ p.last_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Start time (ISO)</label>
+    <input name="start_time" class="form-control" placeholder="2025-11-05T09:00:00">
+  </div>
+  <div class="mb-3">
+    <label>End time (ISO)</label>
+    <input name="end_time" class="form-control" placeholder="2025-11-05T09:30:00">
+  </div>
+  <div class="mb-3">
+    <label>Notes</label>
+    <textarea name="notes" class="form-control"></textarea>
+  </div>
+  <button class="btn btn-success">Save</button>
+  <a class="btn btn-secondary" href="{{ url_for('appointments_list') }}">Cancel</a>
+</form>
+{% endblock %}

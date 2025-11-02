@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Invoices</h2>
+<table class="table">
+  <thead><tr><th>Patient ID</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for inv in invoices %}
+      <tr>
+        <td>{{ inv.patient_id }}</td>
+        <td>{{ inv.total }}</td>
+        <td>{{ inv.status }}</td>
+        <td>
+          <a class="btn btn-sm btn-outline-primary" href="{{ url_for('invoice_pay', invoice_id=inv._id) }}">Pay</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

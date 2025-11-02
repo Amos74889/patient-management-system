@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create Invoice for {{ patient.first_name }} {{ patient.last_name }}</h2>
+<form method="post">
+  <div class="mb-3">
+    <label>Description</label>
+    <input name="description" class="form-control" value="Consultation">
+  </div>
+  <div class="mb-3">
+    <label>Quantity</label>
+    <input name="qty" class="form-control" value="1" type="number">
+  </div>
+  <div class="mb-3">
+    <label>Unit price (USD)</label>
+    <input name="unit_price" class="form-control" value="10">
+  </div>
+  <button class="btn btn-success">Create and Pay</button>
+  <a class="btn btn-secondary" href="{{ url_for('appointments_list') }}">Cancel</a>
+</form>
+{% endblock %}

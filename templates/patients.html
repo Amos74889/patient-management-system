@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <h2>Patients</h2>
+  <a class="btn btn-primary" href="{{ url_for('patient_new') }}">Add Patient</a>
+</div>
+<table class="table mt-3">
+  <thead><tr><th>Name</th><th>Contact</th><th>Email</th><th>Address</th><th>Actions</th></tr></thead>
+  <tbody>
+  {% for p in patients %}
+    <tr>
+      <td>{{ p.first_name }} {{ p.last_name }}</td>
+      <td>{{ p.contact }}</td>
+      <td>{{ p.email }}</td>
+      <td>{{ p.address }}</td>
+      <td>
+        <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('patient_edit', id=p._id) }}">Edit</a>
+        <form style="display:inline" action="{{ url_for('patient_delete', id=p._id) }}" method="post">
+          <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete patient?')">Delete</button>
+        </form>
+        <a class="btn btn-sm btn-outline-primary" href="{{ url_for('appointment_new') }}?patient_id={{ p._id }}">New Appointment</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

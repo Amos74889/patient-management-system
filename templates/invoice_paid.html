@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Payment Success</h2>
+<p>Invoice status: {{ invoice.status if invoice else 'unknown' }}</p>
+<a class="btn btn-primary" href="{{ url_for('invoices_list') }}">Back to invoices</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <h2>Appointments</h2>
+  <a class="btn btn-primary" href="{{ url_for('appointment_new') }}">New Appointment</a>
+</div>
+<table class="table mt-3">
+  <thead><tr><th>Patient</th><th>Start</th><th>End</th><th>Notes</th><th>Actions</th></tr></thead>
+  <tbody>
+  {% for a in appts %}
+    <tr>
+      <td>{{ a.patient_name }}</td>
+      <td>{{ a.start_time }}</td>
+      <td>{{ a.end_time }}</td>
+      <td>{{ a.notes }}</td>
+      <td>
+        <form style="display:inline" method="post" action="{{ url_for('appointment_delete', id=a._id) }}">
+          <button class="btn btn-sm btn-danger" onclick="return confirm('Delete appointment?')">Delete</button>
+        </form>
+        <a class="btn btn-sm btn-success" href="{{ url_for('invoice_new', appointment_id=a._id) }}">Bill</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
